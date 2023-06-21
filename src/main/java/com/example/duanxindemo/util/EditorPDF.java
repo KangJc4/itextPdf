@@ -39,15 +39,16 @@ public class EditorPDF {
         BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream(new File(outPutPDFFilePath), false));
         PdfReader reader = new PdfReader(inputPDFFilePath);
         PdfStamper stamper = new PdfStamper(reader, bos);
+        stamper.insertPage(reader.getNumberOfPages()+1,reader.getPageSizeWithRotation(1));
         int total = reader.getNumberOfPages() + 1;
         PdfContentByte content;
         // BaseFont base = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.EMBEDDED);
         // "c:\\windows\\fonts\\SIMHEI.TTF" 使用windows系统的黑体
         BaseFont base = BaseFont.createFont("c:\\windows\\fonts\\SIMHEI.TTF", BaseFont.IDENTITY_H, BaseFont.NOT_EMBEDDED);
         PdfGState gs = new PdfGState();
-        for (int i = 1; i < total; i++) {
+//        for (int i = 1; i < total; i++) {
             //content = stamper.getOverContent(i);// 在内容上方加水印
-            content = stamper.getUnderContent(i);//在内容下方加水印
+            content = stamper.getUnderContent(total-1);//在内容下方加水印
             gs.setFillOpacity(0.2f);
             content.beginText();
             //字体大小
@@ -75,7 +76,7 @@ public class EditorPDF {
             }
             content.setFontAndSize(base, 8);
             content.endText();
-        }
+//        }
         stamper.close();
         //关闭打开的原来PDF文件，不执行reader.close()删除不了（必须先执行stamper.close()，否则会报错）
         reader.close();
