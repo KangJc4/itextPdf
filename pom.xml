@@ -22,6 +22,13 @@
             <artifactId>spring-boot-starter-web</artifactId>
             <version>2.0.2.RELEASE</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.28</version> <!-- 使用当前可用的最新版本 -->
+        </dependency>
+
         <dependency>
             <groupId>com.itextpdf</groupId>
             <artifactId>itextpdf</artifactId>

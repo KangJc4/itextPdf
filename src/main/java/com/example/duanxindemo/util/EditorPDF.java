@@ -26,6 +26,20 @@ import com.itextpdf.text.pdf.PdfStamper;
  */
 public class EditorPDF {
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /**
      * @param inputPDFFilePath  要写入的pdf文件路径
      * @param outPutPDFFilePath 输出的pdf文件路径
